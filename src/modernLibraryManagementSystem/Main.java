@@ -16,7 +16,7 @@ public class Main {
 		
 		manager.addMaterial(book1);
 		manager.addMaterial(book2);
-		System.out.println("İşlemler tamamlandı herşey listeleniyor");
+		System.out.println("İşlemler tamamlandı bütün envanter listeleniyor");
 		manager.showAllMaterials();
 	}
 
