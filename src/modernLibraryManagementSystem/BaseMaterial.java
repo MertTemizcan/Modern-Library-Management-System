@@ -9,7 +9,7 @@ public class BaseMaterial {
 	
 	public BaseMaterial(String title, String id, boolean isAvailable) {
 		this.title = title;
-		this.id = id;
+		this.setId(id);
 		this.isAvailable = isAvailable;
 	}
 	
