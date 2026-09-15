@@ -3,13 +3,13 @@ package modernLibraryManagementSystem;
 public class Book extends BaseMaterial{
 	
 	private String author;
-	private int pageCount;
+	private int numberOfPages;
 	
 	
-	public Book(String title, String id, boolean isAvailable, String author, int pageCount) {
-		super(title, id, isAvailable);
-		this.author = author;
-		this.setPageCount(pageCount);
+	public Book(String name, String category, double price, boolean isAvailable,  String author, int numberOfPages) {
+		super(name, category, price, isAvailable);
+		setAuthor(author);
+		setNumberOfPages(numberOfPages);
 	}
 	
 	
@@ -17,28 +17,29 @@ public class Book extends BaseMaterial{
 		return this.author;
 	}
 	
-	public void setAuthor(String author) {
+	public final void setAuthor(String author) {
+		if(author == null || author.trim().isEmpty()) {
+			throw new IllegalArgumentException("Yazar boş bırakılamaz");
+		}
+
 		this.author = author;
 	}
 	
-	public int getPageCount() {
-		return this.pageCount;
+	public int getNumberOfPages() {
+		return this.numberOfPages;
 	}
 	
-	public void setPageCount(int pageCount) {
-		if(pageCount >= 0) {
-			this.pageCount = pageCount;
-		} else {
-			System.out.println("Sayfa sayısı negatif değer alamaz");
+	public final void setNumberOfPages(int numberOfPages) {
+		if(numberOfPages <= 0) {
+			throw new IllegalArgumentException("Sayfa sayısı sıfır veya negatif olamaz");
 		}
+
+		this.numberOfPages = numberOfPages;
 	}
-	
+
 	@Override
-	public void showGeneralInfos() {
-		System.out.println();
-		super.showGeneralInfos();
-		System.out.println("Yazarı: " + getAuthor());
-		System.out.println("Sayfa sayısı: " + getPageCount());
+	public String toString() {
+		return super.toString() + String.format(" | Yazar: %s | Sayfa Sayısı: %d", author, numberOfPages);
 	}
 
 }
